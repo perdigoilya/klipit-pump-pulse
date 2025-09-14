@@ -23,9 +23,9 @@ const Sidebar = () => {
     { path: '/generate', icon: Sparkles, label: 'Generate', active: true },
     { path: '/library', icon: Library, label: 'Library', active: true },
     { path: '/styles', icon: Palette, label: 'Styles', active: true },
-    { path: '/integrations', icon: Share2, label: 'Integrations', active: false, tooltip: 'Auto-publish to TikTok, Reels, Shorts' },
-    { path: '/arena', icon: Trophy, label: 'Arena', active: false, tooltip: 'Pick live pump streams. Clip without URLs.' },
-    { path: '/analytics', icon: BarChart3, label: 'Analytics', active: false, tooltip: 'AI scores your Klips for breakout potential.' },
+    { path: '/integrations', icon: Share2, label: 'Integrations', active: true, tooltip: 'Auto-publish to TikTok, Reels, Shorts' },
+    { path: '/arena', icon: Trophy, label: 'Arena', active: true, tooltip: 'Pick live pump streams. Clip without URLs.' },
+    { path: '/analytics', icon: BarChart3, label: 'Analytics', active: true, tooltip: 'AI scores your Klips for breakout potential.' },
   ];
 
   return (
