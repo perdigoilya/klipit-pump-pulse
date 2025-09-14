@@ -11,7 +11,7 @@ const pixelButtonVariants = cva(
         secondary: "btn-pixel-secondary",
         destructive: "bg-destructive text-destructive-foreground border-destructive",
         outline: "border-2 border-foreground bg-background hover:bg-accent",
-        ghost: "border-0 bg-transparent hover:bg-accent shadow-none",
+        ghost: "border-2 border-transparent bg-transparent hover:border-foreground hover:bg-accent text-foreground",
       },
       size: {
         default: "h-10 px-4 py-2",
