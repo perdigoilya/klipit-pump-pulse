@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { 
   Sparkles, 
@@ -7,13 +7,15 @@ import {
   Share2, 
   Trophy, 
   BarChart3,
-  Info
+  Info,
+  X
 } from 'lucide-react';
 import { PixelButton } from '@/components/ui/pixel-button';
 import { PixelTooltip, PixelTooltipContent, PixelTooltipTrigger, PixelTooltipProvider } from '@/components/ui/pixel-tooltip';
 
 const Sidebar = () => {
   const location = useLocation();
+  const [isProTipDismissed, setIsProTipDismissed] = useState(false);
   
   const activeTab = (path: string) => location.pathname === path;
   
@@ -78,19 +80,28 @@ const Sidebar = () => {
           })}
         </nav>
         
-        <div className="absolute bottom-4 left-4 right-4">
-          <div className="p-3 border-2 border-foreground bg-muted">
-            <div className="flex items-start gap-2">
-              <Info className="w-4 h-4 mt-0.5 flex-shrink-0" />
-              <div>
-                <p className="font-pixel text-xs font-semibold">Pro Tip</p>
-                <p className="font-pixel text-xs text-muted-foreground mt-1">
-                  Best clips come from live streams with active chat!
-                </p>
+        {!isProTipDismissed && (
+          <div className="absolute bottom-4 left-4 right-4">
+            <div className="p-3 border-2 border-foreground bg-muted relative">
+              <button
+                onClick={() => setIsProTipDismissed(true)}
+                className="absolute top-2 right-2 p-1 hover:bg-foreground/10 rounded transition-colors"
+                aria-label="Dismiss tip"
+              >
+                <X className="w-3 h-3" />
+              </button>
+              <div className="flex items-start gap-2 pr-6">
+                <Info className="w-4 h-4 mt-0.5 flex-shrink-0" />
+                <div>
+                  <p className="font-pixel text-xs font-semibold">Pro Tip</p>
+                  <p className="font-pixel text-xs text-muted-foreground mt-1">
+                    Best clips come from live streams with active chat!
+                  </p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        )}
       </aside>
     </PixelTooltipProvider>
   );
