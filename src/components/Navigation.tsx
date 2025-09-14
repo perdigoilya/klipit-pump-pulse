@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { PixelButton } from '@/components/ui/pixel-button';
 import logo from '@/assets/logo.png';
+import klipitLogo from '@/assets/klipit-logo.png';
 
 const Navigation = () => {
   const location = useLocation();
@@ -11,7 +12,7 @@ const Navigation = () => {
       <nav className="flex items-center justify-between max-w-7xl mx-auto">
         <Link to="/" className="flex items-center hover:opacity-80 transition-opacity">
           <img src={logo} alt="Klipit.fun" className="w-12 h-12 mr-3" />
-          <span className="font-pixel-xl text-foreground">Klipit.fun</span>
+          <img src={klipitLogo} alt="Klipit.fun" className="h-8" />
         </Link>
         
         <div className="flex items-center gap-4">
