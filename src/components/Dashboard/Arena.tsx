@@ -97,7 +97,7 @@ const Arena = () => {
         </div>
 
         {/* Live Streams Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
           {liveStreams.map((stream) => (
             <PixelCard key={stream.id} className="relative overflow-hidden">
               <div className="aspect-video bg-muted border-b-2 border-foreground relative">
@@ -155,7 +155,7 @@ const Arena = () => {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
           {/* Hot Moments */}
           <PixelCard>
             <PixelCardHeader>
@@ -230,7 +230,7 @@ const Arena = () => {
         {/* Quick Stats */}
         <PixelCard>
           <PixelCardContent className="p-6">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6 text-center">
               <div>
                 <div className="font-pixel-xl text-2xl text-green-400 mb-1">47</div>
                 <div className="font-pixel text-xs text-muted-foreground">Active Streams</div>

@@ -92,7 +92,7 @@ const Analytics = () => {
         </div>
 
         {/* Overall Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4">
           <PixelCard>
             <PixelCardContent className="p-4 text-center">
               <div className="font-pixel-xl text-2xl text-green-400 mb-1">82.4</div>
@@ -177,7 +177,7 @@ const Analytics = () => {
           </PixelCardContent>
         </PixelCard>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
           {/* Trending Topics */}
           <PixelCard>
             <PixelCardHeader>
@@ -272,7 +272,7 @@ const Analytics = () => {
             </PixelCardTitle>
           </PixelCardHeader>
           <PixelCardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-4">
               <div className="p-4 border border-green-400/30 bg-green-400/5 rounded">
                 <h4 className="font-pixel text-sm text-green-400 mb-2">🚀 High Opportunity</h4>
                 <p className="font-pixel text-xs text-muted-foreground">

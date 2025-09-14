@@ -32,13 +32,13 @@ const Hero = () => {
       <div className="relative z-10 text-center max-w-4xl mx-auto">
         {/* Main logo and tagline */}
         <div className="mb-8">
-        <h1 className="font-pixel-xl text-6xl mb-4 text-shadow-pixel animate-pixel-bounce">
+        <h1 className="font-pixel-xl text-3xl sm:text-4xl md:text-6xl mb-4 text-shadow-pixel animate-pixel-bounce">
           klipit.fun
         </h1>
-          <h2 className="font-pixel-lg text-2xl mb-2 text-shadow-pixel">
+          <h2 className="font-pixel-lg text-lg sm:text-xl md:text-2xl mb-2 text-shadow-pixel">
             We power the attention market.
           </h2>
-          <p className="font-retro text-lg text-muted-foreground">
+          <p className="font-retro text-sm sm:text-base md:text-lg text-muted-foreground">
             {currentTagline}
           </p>
         </div>
@@ -62,7 +62,7 @@ const Hero = () => {
               </p>
             </div>
             
-            <div className="flex gap-4">
+            <div className="flex flex-col sm:flex-row gap-4">
               <PixelButton 
                 onClick={handleGenerate}
                 className="flex-1 flex items-center justify-center gap-2"
@@ -72,7 +72,7 @@ const Hero = () => {
                 Generate Klips
                 <ArrowRight className="w-4 h-4" />
               </PixelButton>
-              <PixelButton variant="secondary" onClick={() => navigate('/styles')}>
+              <PixelButton variant="secondary" onClick={() => navigate('/styles')} className="sm:w-auto">
                 Customize Style
               </PixelButton>
             </div>
@@ -80,7 +80,7 @@ const Hero = () => {
         </PixelCard>
 
         {/* Attention flywheel */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 max-w-5xl mx-auto">
           {[
             { title: "Streamers Stream", desc: "pump.fun creators go live" },
             { title: "Klipit Captures", desc: "AI finds viral moments" },
@@ -89,15 +89,15 @@ const Hero = () => {
           ].map((step, i) => (
             <div key={i} className="relative">
               <PixelCard className="h-full">
-                <PixelCardContent className="text-center p-4 min-h-32 md:min-h-36 flex flex-col items-center justify-center">
-                  <h3 className="font-pixel-lg text-sm mb-2">{step.title}</h3>
+                <PixelCardContent className="text-center p-3 sm:p-4 min-h-28 sm:min-h-32 md:min-h-36 flex flex-col items-center justify-center">
+                  <h3 className="font-pixel-lg text-xs sm:text-sm mb-2">{step.title}</h3>
                   <p className="font-pixel text-xs text-muted-foreground">
                     {step.desc}
                   </p>
                 </PixelCardContent>
               </PixelCard>
               {i < 3 && (
-                <ArrowRight className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-6 w-6 h-6 text-foreground hidden md:block animate-pulse" />
+                <ArrowRight className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 sm:translate-x-6 w-4 sm:w-6 h-4 sm:h-6 text-foreground hidden lg:block animate-pulse" />
               )}
             </div>
           ))}
@@ -105,11 +105,11 @@ const Hero = () => {
       </div>
 
       {/* Footer */}
-      <footer className="absolute bottom-4 left-0 right-0 text-center">
+      <footer className="absolute bottom-4 left-0 right-0 text-center px-4">
         <p className="font-pixel text-xs text-muted-foreground">
           Klipit.fun — We power the attention market.
         </p>
-        <div className="flex justify-center gap-4 mt-2 text-xs">
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mt-2 text-xs">
           <a href="https://x.com/KlipitDotFun" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground">X (Twitter)</a>
           <a href="https://pump.fun/live" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground">pump.fun live</a>
           <a href="#" className="text-muted-foreground hover:text-foreground">Terms</a>

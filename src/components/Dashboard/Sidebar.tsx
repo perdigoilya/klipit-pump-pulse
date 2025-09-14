@@ -8,12 +8,16 @@ import {
   Trophy, 
   BarChart3,
   Info,
-  X
+  X as CloseIcon
 } from 'lucide-react';
 import { PixelButton } from '@/components/ui/pixel-button';
 import { PixelTooltip, PixelTooltipContent, PixelTooltipTrigger, PixelTooltipProvider } from '@/components/ui/pixel-tooltip';
 
-const Sidebar = () => {
+interface SidebarProps {
+  onClose?: () => void;
+}
+
+const Sidebar = ({ onClose }: SidebarProps) => {
   const location = useLocation();
   const [isProTipDismissed, setIsProTipDismissed] = useState(false);
   
@@ -28,9 +32,26 @@ const Sidebar = () => {
     { path: '/analytics', icon: BarChart3, label: 'Analytics', active: true, tooltip: 'AI scores your Klips for breakout potential.' },
   ];
 
+  const handleNavClick = () => {
+    if (onClose) {
+      onClose();
+    }
+  };
+
   return (
     <PixelTooltipProvider>
-      <aside className="w-64 border-r-2 border-foreground bg-card h-full">
+      <aside className="w-64 border-r-2 border-foreground bg-card h-full relative">
+        {/* Mobile Close Button */}
+        {onClose && (
+          <button
+            className="lg:hidden absolute top-4 right-4 z-10 p-1 hover:bg-foreground/10 rounded transition-colors"
+            onClick={onClose}
+            aria-label="Close sidebar"
+          >
+            <CloseIcon className="w-5 h-5" />
+          </button>
+        )}
+        
         <div className="p-4 border-b-2 border-foreground">
           <h2 className="font-pixel-lg text-lg">Dashboard</h2>
         </div>
@@ -67,7 +88,7 @@ const Sidebar = () => {
             }
             
             return (
-              <Link key={item.path} to={item.path}>
+              <Link key={item.path} to={item.path} onClick={handleNavClick}>
                 <PixelButton
                   variant={activeTab(item.path) ? 'default' : 'ghost'}
                   className="w-full justify-start gap-3"
@@ -88,7 +109,7 @@ const Sidebar = () => {
                 className="absolute top-2 right-2 p-1 hover:bg-foreground/10 rounded transition-colors"
                 aria-label="Dismiss tip"
               >
-                <X className="w-3 h-3" />
+                <CloseIcon className="w-3 h-3" />
               </button>
               <div className="flex items-start gap-2 pr-6">
                 <Info className="w-4 h-4 mt-0.5 flex-shrink-0" />

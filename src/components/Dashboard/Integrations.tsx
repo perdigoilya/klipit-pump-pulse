@@ -62,7 +62,7 @@ const Integrations = () => {
         </div>
 
         {/* Connected Accounts */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
           {integrations.map((integration) => {
             const Icon = integration.icon;
             return (
@@ -132,7 +132,7 @@ const Integrations = () => {
             <PixelCardTitle>Publishing Settings</PixelCardTitle>
           </PixelCardHeader>
           <PixelCardContent className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-4">
               <div>
                 <label className="block font-pixel text-sm mb-2">Default Caption Template</label>
                 <PixelInput 
@@ -167,7 +167,7 @@ const Integrations = () => {
             <PixelCardTitle>Publishing Analytics (Last 30 Days)</PixelCardTitle>
           </PixelCardHeader>
           <PixelCardContent>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4">
               <div className="text-center">
                 <div className="font-pixel-xl text-2xl text-foreground">1,247</div>
                 <div className="font-pixel text-xs text-muted-foreground">Total Posts</div>
