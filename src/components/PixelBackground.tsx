@@ -1,5 +1,5 @@
 import React from 'react';
-import { Camera, Gamepad2, MessageCircle, Coins } from 'lucide-react';
+import { Camera, Gamepad2, MessageCircle, Coins, Pill } from 'lucide-react';
 
 const PixelBackground = () => {
   return (
@@ -21,7 +21,7 @@ const PixelBackground = () => {
         <Coins className="w-5 h-5 text-foreground opacity-10" />
       </div>
       <div className="absolute top-1/3 right-10 animate-bounce" style={{ animationDelay: '0.8s', animationDuration: '3.2s' }}>
-        <Camera className="w-9 h-9 text-foreground opacity-20" />
+        <Pill className="w-9 h-9 text-foreground opacity-20" />
       </div>
       
       {/* Grid pattern overlay */}
