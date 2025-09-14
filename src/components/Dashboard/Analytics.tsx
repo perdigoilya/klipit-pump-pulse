@@ -4,8 +4,17 @@ import { PixelCard, PixelCardContent, PixelCardHeader, PixelCardTitle } from '@/
 import { PixelButton } from '@/components/ui/pixel-button';
 import { PixelProgress } from '@/components/ui/pixel-progress';
 import { Badge } from '@/components/ui/badge';
+import { useToast } from '@/hooks/use-toast';
 
 const Analytics = () => {
+  const { toast } = useToast();
+
+  const handleGetNotified = () => {
+    toast({
+      title: "Thanks for your interest!",
+      description: "We'll notify you when Analytics are ready. Get insights on viral potential!",
+    });
+  };
   const recentClips = [
     {
       id: 1,
@@ -303,7 +312,7 @@ const Analytics = () => {
           <p className="font-pixel text-muted-foreground mb-6">
             Virality analytics are being built. Get AI-powered insights on viral potential and engagement forecasts.
           </p>
-          <PixelButton disabled className="bg-muted border-muted-foreground">
+          <PixelButton onClick={handleGetNotified} className="bg-muted border-muted-foreground hover:bg-muted/80">
             <TrendingUp className="w-4 h-4 mr-2" />
             Get Notified
           </PixelButton>

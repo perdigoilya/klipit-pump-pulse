@@ -4,8 +4,17 @@ import { PixelCard, PixelCardContent, PixelCardHeader, PixelCardTitle } from '@/
 import { PixelButton } from '@/components/ui/pixel-button';
 import { PixelInput } from '@/components/ui/pixel-input';
 import { Switch } from '@/components/ui/switch';
+import { useToast } from '@/hooks/use-toast';
 
 const Integrations = () => {
+  const { toast } = useToast();
+
+  const handleGetNotified = () => {
+    toast({
+      title: "Thanks for your interest!",
+      description: "We'll notify you when Integrations are ready. Stay tuned!",
+    });
+  };
   const integrations = [
     {
       name: 'TikTok',
@@ -190,7 +199,7 @@ const Integrations = () => {
           <p className="font-pixel text-muted-foreground mb-6">
             Social integrations are being built. Connect your accounts to auto-publish viral clips across all platforms.
           </p>
-          <PixelButton disabled className="bg-muted border-muted-foreground">
+          <PixelButton onClick={handleGetNotified} className="bg-muted border-muted-foreground hover:bg-muted/80">
             <Link className="w-4 h-4 mr-2" />
             Get Notified
           </PixelButton>

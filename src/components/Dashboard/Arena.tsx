@@ -3,8 +3,17 @@ import { Play, Users, TrendingUp, Clock, Eye, Flame, Trophy, Target, Zap } from 
 import { PixelCard, PixelCardContent, PixelCardHeader, PixelCardTitle } from '@/components/ui/pixel-card';
 import { PixelButton } from '@/components/ui/pixel-button';
 import { Badge } from '@/components/ui/badge';
+import { useToast } from '@/hooks/use-toast';
 
 const Arena = () => {
+  const { toast } = useToast();
+
+  const handleGetNotified = () => {
+    toast({
+      title: "Thanks for your interest!",
+      description: "We'll notify you when Arena is ready. Get ready to clip live streams!",
+    });
+  };
   const liveStreams = [
     {
       id: 1,
@@ -253,7 +262,7 @@ const Arena = () => {
           <p className="font-pixel text-muted-foreground mb-6">
             Stream Arena is being built. Browse live pump.fun streams and create clips in real-time without URLs.
           </p>
-          <PixelButton disabled className="bg-muted border-muted-foreground">
+          <PixelButton onClick={handleGetNotified} className="bg-muted border-muted-foreground hover:bg-muted/80">
             <Eye className="w-4 h-4 mr-2" />
             Get Notified
           </PixelButton>
