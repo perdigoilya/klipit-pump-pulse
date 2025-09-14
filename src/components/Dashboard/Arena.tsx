@@ -4,10 +4,6 @@ import { PixelCard, PixelCardContent, PixelCardHeader, PixelCardTitle } from '@/
 import { PixelButton } from '@/components/ui/pixel-button';
 import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
-import stream1 from '@/assets/stream-1.png';
-import stream2 from '@/assets/stream-2.png';
-import stream3 from '@/assets/stream-3.png';
-import stream4 from '@/assets/stream-4.png';
 
 const Arena = () => {
   const { toast } = useToast();
@@ -24,7 +20,7 @@ const Arena = () => {
       streamer: "DegenKing420",
       viewers: 2847,
       token: "$MOON",
-      thumbnail: "user-uploads://Screenshot_2025-09-14_at_4.18.41 AM-2.png",
+      thumbnail: "/placeholder.svg",
       title: "🚀 MOON TO THE STRATOSPHERE 🚀",
       hype: 94,
       duration: "2h 34m",
@@ -35,7 +31,7 @@ const Arena = () => {
       streamer: "CryptoSage",
       viewers: 1923,
       token: "$PEPE",
-      thumbnail: "user-uploads://Screenshot_2025-09-14_at_4.19.48 AM-2.png",
+      thumbnail: "/placeholder.svg", 
       title: "PEPE REVIVAL - 1000X INCOMING",
       hype: 87,
       duration: "45m",
@@ -46,7 +42,7 @@ const Arena = () => {
       streamer: "DiamondHands",
       viewers: 1456,
       token: "$SHIB",
-      thumbnail: "user-uploads://Screenshot_2025-09-14_at_4.20.50 AM-2.png",
+      thumbnail: "/placeholder.svg",
       title: "SHIB WHALE MOVEMENTS DETECTED",
       hype: 76,
       duration: "1h 12m",
@@ -57,7 +53,7 @@ const Arena = () => {
       streamer: "MoonMission",
       viewers: 892,
       token: "$DOGE",
-      thumbnail: "user-uploads://Screenshot_2025-09-14_at_4.21.52 AM-2.png",
+      thumbnail: "/placeholder.svg",
       title: "Elon Tweet Analysis + Price Action",
       hype: 83,
       duration: "23m",
@@ -105,11 +101,6 @@ const Arena = () => {
           {liveStreams.map((stream) => (
             <PixelCard key={stream.id} className="relative overflow-hidden">
               <div className="aspect-video bg-muted border-b-2 border-foreground relative">
-                <img 
-                  src={stream.thumbnail} 
-                  alt={`${stream.streamer} live stream`}
-                  className="w-full h-full object-cover"
-                />
                 <div className="absolute top-2 left-2 flex gap-2">
                   <Badge variant="destructive" className="bg-red-500 text-white font-pixel text-xs">
                     <div className="w-2 h-2 bg-white rounded-full mr-1 animate-pulse"></div>
