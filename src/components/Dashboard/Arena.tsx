@@ -4,10 +4,6 @@ import { PixelCard, PixelCardContent, PixelCardHeader, PixelCardTitle } from '@/
 import { PixelButton } from '@/components/ui/pixel-button';
 import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
-import stream1 from '@/assets/stream-1.jpg';
-import stream2 from '@/assets/stream-2.jpg';
-import stream3 from '@/assets/stream-3.jpg';
-import stream4 from '@/assets/stream-4.jpg';
 
 const Arena = () => {
   const { toast } = useToast();
@@ -24,7 +20,7 @@ const Arena = () => {
       streamer: "DegenKing420",
       viewers: 2847,
       token: "$MOON",
-      thumbnail: stream1,
+      thumbnail: "/placeholder.svg",
       title: "🚀 MOON TO THE STRATOSPHERE 🚀",
       hype: 94,
       duration: "2h 34m",
@@ -35,7 +31,7 @@ const Arena = () => {
       streamer: "CryptoSage",
       viewers: 1923,
       token: "$PEPE",
-      thumbnail: stream2, 
+      thumbnail: "/placeholder.svg", 
       title: "PEPE REVIVAL - 1000X INCOMING",
       hype: 87,
       duration: "45m",
@@ -46,7 +42,7 @@ const Arena = () => {
       streamer: "DiamondHands",
       viewers: 1456,
       token: "$SHIB",
-      thumbnail: stream3,
+      thumbnail: "/placeholder.svg",
       title: "SHIB WHALE MOVEMENTS DETECTED",
       hype: 76,
       duration: "1h 12m",
@@ -57,7 +53,7 @@ const Arena = () => {
       streamer: "MoonMission",
       viewers: 892,
       token: "$DOGE",
-      thumbnail: stream4,
+      thumbnail: "/placeholder.svg",
       title: "Elon Tweet Analysis + Price Action",
       hype: 83,
       duration: "23m",
