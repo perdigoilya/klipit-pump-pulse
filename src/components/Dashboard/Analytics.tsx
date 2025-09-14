@@ -303,14 +303,14 @@ const Analytics = () => {
       </div>
 
       {/* Coming Soon Overlay */}
-      <div className="absolute inset-0 bg-background/80 backdrop-blur-sm flex items-center justify-center">
+      <div className="absolute inset-0 bg-background/60 backdrop-blur-[2px] flex items-center justify-center">
         <div className="text-center max-w-md p-8">
           <div className="w-20 h-20 mx-auto mb-6 border-4 border-foreground bg-muted flex items-center justify-center animate-scanlines">
             <BarChart3 className="w-10 h-10 text-foreground" />
           </div>
           <h2 className="font-pixel-xl text-3xl mb-4">Coming Soon</h2>
           <p className="font-pixel text-muted-foreground mb-6">
-            Virality analytics are being built. Get AI-powered insights on viral potential and engagement forecasts.
+            Virality analytics are being built. Get AI-powered insights on viral potential, engagement forecasts, optimal posting times, and trending topic analysis for maximum reach.
           </p>
           <PixelButton onClick={handleGetNotified} className="bg-muted border-muted-foreground hover:bg-muted/80">
             <TrendingUp className="w-4 h-4 mr-2" />

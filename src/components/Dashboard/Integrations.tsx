@@ -190,14 +190,14 @@ const Integrations = () => {
       </div>
 
       {/* Coming Soon Overlay */}
-      <div className="absolute inset-0 bg-background/80 backdrop-blur-sm flex items-center justify-center">
+      <div className="absolute inset-0 bg-background/60 backdrop-blur-[2px] flex items-center justify-center">
         <div className="text-center max-w-md p-8">
           <div className="w-20 h-20 mx-auto mb-6 border-4 border-foreground bg-muted flex items-center justify-center animate-scanlines">
             <Zap className="w-10 h-10 text-foreground" />
           </div>
           <h2 className="font-pixel-xl text-3xl mb-4">Coming Soon</h2>
           <p className="font-pixel text-muted-foreground mb-6">
-            Social integrations are being built. Connect your accounts to auto-publish viral clips across all platforms.
+            Social integrations are being built. Connect your accounts to auto-publish viral clips across all platforms with custom captions, optimal timing, and trending hashtags.
           </p>
           <PixelButton onClick={handleGetNotified} className="bg-muted border-muted-foreground hover:bg-muted/80">
             <Link className="w-4 h-4 mr-2" />
