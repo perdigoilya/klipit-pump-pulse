@@ -253,7 +253,7 @@ const Arena = () => {
       </div>
 
       {/* Coming Soon Overlay */}
-      <div className="absolute inset-0 bg-background/25 backdrop-blur-[2px] flex items-center justify-center">
+      <div className="absolute inset-0 bg-background/10 backdrop-blur-[2px] flex items-center justify-center">
         <div className="text-center max-w-md p-8">
           <div className="w-20 h-20 mx-auto mb-6 border-4 border-foreground bg-muted flex items-center justify-center animate-scanlines">
             <Target className="w-10 h-10 text-foreground" />
