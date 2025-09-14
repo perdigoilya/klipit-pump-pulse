@@ -1,5 +1,8 @@
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { PixelButton } from "@/components/ui/pixel-button";
+import { PixelCard, PixelCardContent } from "@/components/ui/pixel-card";
+import { Home, ArrowLeft } from "lucide-react";
 
 const NotFound = () => {
   const location = useLocation();
@@ -9,14 +12,39 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">404</h1>
-        <p className="mb-4 text-xl text-gray-600">Oops! Page not found</p>
-        <a href="/" className="text-blue-500 underline hover:text-blue-700">
-          Return to Home
-        </a>
-      </div>
+    <div className="min-h-screen flex items-center justify-center bg-background p-4">
+      <PixelCard className="text-center max-w-md">
+        <PixelCardContent className="space-y-6">
+          <div className="w-24 h-24 mx-auto border-4 border-foreground bg-muted flex items-center justify-center">
+            <span className="font-pixel-xl text-4xl">404</span>
+          </div>
+          
+          <div>
+            <h1 className="font-pixel-xl text-2xl mb-2">Page Not Found</h1>
+            <p className="font-pixel text-muted-foreground">
+              This page got rugged. Let's get you back to safety.
+            </p>
+          </div>
+          
+          <div className="flex gap-3">
+            <PixelButton 
+              onClick={() => window.history.back()}
+              variant="secondary"
+              className="flex items-center gap-2"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              Go Back
+            </PixelButton>
+            <PixelButton 
+              onClick={() => window.location.href = "/"}
+              className="flex items-center gap-2"
+            >
+              <Home className="w-4 h-4" />
+              Home
+            </PixelButton>
+          </div>
+        </PixelCardContent>
+      </PixelCard>
     </div>
   );
 };
