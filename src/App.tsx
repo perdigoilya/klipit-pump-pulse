@@ -9,6 +9,9 @@ import DashboardLayout from "./components/Dashboard/DashboardLayout";
 import Generate from "./components/Dashboard/Generate";
 import Library from "./components/Dashboard/Library";
 import Styles from "./components/Dashboard/Styles";
+import Integrations from "./components/Dashboard/Integrations";
+import Arena from "./components/Dashboard/Arena";
+import Analytics from "./components/Dashboard/Analytics";
 import ComingSoon from "./components/Dashboard/ComingSoon";
 import NotFound from "./pages/NotFound";
 
@@ -27,9 +30,9 @@ const App = () => (
               <Route path="generate" element={<Generate />} />
               <Route path="library" element={<Library />} />
               <Route path="styles" element={<Styles />} />
-              <Route path="integrations" element={<ComingSoon type="integrations" />} />
-              <Route path="arena" element={<ComingSoon type="arena" />} />
-              <Route path="analytics" element={<ComingSoon type="analytics" />} />
+              <Route path="integrations" element={<Integrations />} />
+              <Route path="arena" element={<Arena />} />
+              <Route path="analytics" element={<Analytics />} />
             </Route>
             {/* Direct dashboard routes (for easier navigation) */}
             <Route path="/generate" element={<DashboardLayout />}>
@@ -42,13 +45,13 @@ const App = () => (
               <Route index element={<Styles />} />
             </Route>
             <Route path="/integrations" element={<DashboardLayout />}>
-              <Route index element={<ComingSoon type="integrations" />} />
+              <Route index element={<Integrations />} />
             </Route>
             <Route path="/arena" element={<DashboardLayout />}>
-              <Route index element={<ComingSoon type="arena" />} />
+              <Route index element={<Arena />} />
             </Route>
             <Route path="/analytics" element={<DashboardLayout />}>
-              <Route index element={<ComingSoon type="analytics" />} />
+              <Route index element={<Analytics />} />
             </Route>
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
