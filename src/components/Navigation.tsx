@@ -11,7 +11,7 @@ const Navigation = () => {
     <header className="border-b-2 border-foreground bg-background p-4">
       <nav className="flex items-center justify-between max-w-7xl mx-auto">
         <Link to="/" className="flex items-center hover:opacity-80 transition-opacity">
-          <img src={logo} alt="Klipit.fun" className="w-12 h-12 mr-3" />
+          <img src={logo} alt="Klipit.fun" className="w-12 h-12 mr-1" />
           <img src={klipitLogo} alt="Klipit.fun" className="h-12" />
         </Link>
         
