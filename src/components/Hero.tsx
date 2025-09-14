@@ -32,9 +32,9 @@ const Hero = () => {
       <div className="relative z-10 text-center max-w-4xl mx-auto">
         {/* Main logo and tagline */}
         <div className="mb-8">
-          <h1 className="font-pixel-xl text-6xl mb-4 text-shadow-pixel animate-pixel-bounce">
-            Klipit.fun
-          </h1>
+        <h1 className="font-pixel-xl text-6xl mb-4 text-shadow-pixel animate-pixel-bounce">
+          klipit.fun
+        </h1>
           <h2 className="font-pixel-lg text-2xl mb-2 text-shadow-pixel">
             We power the attention market.
           </h2>
