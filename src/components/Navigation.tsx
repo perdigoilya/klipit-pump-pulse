@@ -12,7 +12,7 @@ const Navigation = () => {
       <nav className="flex items-center justify-between max-w-7xl mx-auto">
         <Link to="/" className="flex items-center hover:opacity-80 transition-opacity">
           <img src={logo} alt="Klipit.fun" className="w-12 h-12 mr-3" />
-          <img src={klipitLogo} alt="Klipit.fun" className="h-8" />
+          <img src={klipitLogo} alt="Klipit.fun" className="h-12" />
         </Link>
         
         <div className="flex items-center gap-4">
