@@ -97,7 +97,7 @@ const Hero = () => {
                 </PixelCardContent>
               </PixelCard>
               {i < 3 && (
-                <ArrowRight className="absolute -right-2 top-1/2 -translate-y-1/2 w-6 h-6 text-foreground hidden md:block animate-pulse" />
+                <ArrowRight className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-6 w-6 h-6 text-foreground hidden md:block animate-pulse" />
               )}
             </div>
           ))}
