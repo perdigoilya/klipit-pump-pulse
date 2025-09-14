@@ -10,6 +10,8 @@ import {
 import { PixelButton } from '@/components/ui/pixel-button';
 import { PixelCard, PixelCardContent, PixelCardHeader, PixelCardTitle } from '@/components/ui/pixel-card';
 import { useToast } from '@/hooks/use-toast';
+import { CursorTooltip } from '@/components/ui/cursor-tooltip';
+import { cn } from '@/lib/utils';
 
 const Styles = () => {
   const { toast } = useToast();
@@ -36,9 +38,12 @@ const Styles = () => {
   ];
 
   const themes = [
-    { name: 'Clean', desc: 'Minimal captions, smooth cuts' },
-    { name: 'Degenerate', desc: 'Max chaos, all effects on' },
-    { name: 'Commentary', desc: 'Focus on speech, clean visuals' }
+    { name: 'Clean', desc: 'Minimal captions, smooth cuts', available: true },
+    { name: 'Degenerate', desc: 'Max chaos, all effects on', available: false },
+    { name: 'Commentary', desc: 'Focus on speech, clean visuals', available: false },
+    { name: 'Satisfying', desc: 'Adds attention grabbing satisfying footage', available: false },
+    { name: 'Brainrot 1.0', desc: 'Adds subway surfer gameplay', available: false },
+    { name: 'bRAinROT 2.0', desc: 'Adds 3 extra pieces of content alongside (gameplay, gooning, satisfying video) with all effects on', available: false }
   ];
 
   const handleSave = () => {
@@ -163,19 +168,32 @@ const Styles = () => {
             <PixelCardContent>
               <div className="space-y-3">
                 {themes.map(theme => (
-                  <label key={theme.name} className="flex items-center gap-3 cursor-pointer">
-                    <input
-                      type="radio"
-                      name="theme"
-                      checked={selectedTheme === theme.name}
-                      onChange={() => setSelectedTheme(theme.name)}
-                      className="w-4 h-4 border-2 border-foreground bg-background"
-                    />
-                    <div>
-                      <div className="font-pixel text-sm font-semibold">{theme.name}</div>
-                      <div className="font-pixel text-xs text-muted-foreground">{theme.desc}</div>
-                    </div>
-                  </label>
+                  <CursorTooltip
+                    key={theme.name}
+                    content="Coming Soon"
+                    disabled={!theme.available}
+                    className="block"
+                  >
+                    <label 
+                      className={cn(
+                        "flex items-center gap-3",
+                        theme.available ? "cursor-pointer" : "cursor-not-allowed opacity-50"
+                      )}
+                    >
+                      <input
+                        type="radio"
+                        name="theme"
+                        checked={selectedTheme === theme.name}
+                        onChange={() => theme.available && setSelectedTheme(theme.name)}
+                        disabled={!theme.available}
+                        className="w-4 h-4 border-2 border-foreground bg-background disabled:opacity-50"
+                      />
+                      <div>
+                        <div className="font-pixel text-sm font-semibold">{theme.name}</div>
+                        <div className="font-pixel text-xs text-muted-foreground">{theme.desc}</div>
+                      </div>
+                    </label>
+                  </CursorTooltip>
                 ))}
               </div>
             </PixelCardContent>
@@ -227,7 +245,7 @@ const Styles = () => {
                   
                   {/* Sample caption overlay */}
                   <div className="absolute bottom-6 left-4 right-4">
-                    <div 
+                     <div 
                       className={`
                         font-pixel text-xs text-foreground px-2 py-1 text-center
                         ${captionStyle.allCaps ? 'uppercase' : ''}
@@ -242,6 +260,9 @@ const Styles = () => {
                     >
                       {selectedTheme === 'Degenerate' ? 'MOON MOON MOON!' : 
                        selectedTheme === 'Commentary' ? '"This is actually huge"' :
+                       selectedTheme === 'Satisfying' ? 'SO SATISFYING!' :
+                       selectedTheme === 'Brainrot 1.0' ? 'SUBWAY SURFERS!' :
+                       selectedTheme === 'bRAinROT 2.0' ? 'MAX CHAOS MODE!' :
                        'Sample caption text'}
                     </div>
                   </div>
