@@ -110,6 +110,8 @@ const Hero = () => {
           Klipit.fun — We power the attention market.
         </p>
         <div className="flex justify-center gap-4 mt-2 text-xs">
+          <a href="https://x.com/KlipitDotFun" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground">X (Twitter)</a>
+          <a href="https://pump.fun/live" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground">pump.fun live</a>
           <a href="#" className="text-muted-foreground hover:text-foreground">Terms</a>
           <a href="#" className="text-muted-foreground hover:text-foreground">Privacy</a>
         </div>
