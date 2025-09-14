@@ -89,7 +89,7 @@ const Hero = () => {
           ].map((step, i) => (
             <div key={i} className="relative">
               <PixelCard className="h-full">
-                <PixelCardContent className="text-center p-4">
+                <PixelCardContent className="text-center p-4 min-h-32 md:min-h-36 flex flex-col items-center justify-center">
                   <h3 className="font-pixel-lg text-sm mb-2">{step.title}</h3>
                   <p className="font-pixel text-xs text-muted-foreground">
                     {step.desc}
