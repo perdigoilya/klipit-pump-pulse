@@ -80,7 +80,7 @@ const Hero = () => {
         </PixelCard>
 
         {/* Attention flywheel */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
           {[
             { title: "Streamers Stream", desc: "pump.fun creators go live" },
             { title: "Klipit Captures", desc: "AI finds viral moments" },
@@ -97,7 +97,7 @@ const Hero = () => {
                 </PixelCardContent>
               </PixelCard>
               {i < 3 && (
-                <ArrowRight className="absolute -right-6 top-1/2 -translate-y-1/2 w-4 h-4 text-foreground hidden md:block" />
+                <ArrowRight className="absolute -right-4 top-1/2 -translate-y-1/2 w-6 h-6 text-foreground hidden md:block animate-pulse" />
               )}
             </div>
           ))}
