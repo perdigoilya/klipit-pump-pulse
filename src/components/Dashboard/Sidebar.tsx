@@ -81,8 +81,8 @@ const Sidebar = () => {
         </nav>
         
         {!isProTipDismissed && (
-          <div className="absolute bottom-4 left-4 right-4">
-            <div className="p-3 border-2 border-foreground bg-muted relative">
+          <div className="fixed bottom-4 left-4 right-4 z-50 max-w-[240px]">
+            <div className="p-3 border-2 border-foreground bg-muted relative min-h-[80px]">
               <button
                 onClick={() => setIsProTipDismissed(true)}
                 className="absolute top-2 right-2 p-1 hover:bg-foreground/10 rounded transition-colors"
