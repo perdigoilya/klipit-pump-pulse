@@ -17,6 +17,7 @@ const Styles = () => {
   const { toast } = useToast();
   
   const [selectedFont, setSelectedFont] = useState('Press Start 2P');
+  const [fontColor, setFontColor] = useState('#ffffff');
   const [captionStyle, setCaptionStyle] = useState({
     allCaps: true,
     dropShadow: true,
@@ -55,6 +56,7 @@ const Styles = () => {
 
   const resetToDefaults = () => {
     setSelectedFont('Press Start 2P');
+    setFontColor('#ffffff');
     setCaptionStyle({ allCaps: true, dropShadow: true, outline: false });
     setSfxEnabled({ bleep: true, zoom: false, shake: true, scratch: false });
     setSelectedTheme('Clean');
@@ -93,6 +95,35 @@ const Styles = () => {
                       className="text-xs"
                     >
                       {font}
+                    </PixelButton>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <label className="block font-pixel text-sm mb-2">Font Color</label>
+                <div className="grid grid-cols-4 gap-2">
+                  {[
+                    { name: 'White', value: '#ffffff' },
+                    { name: 'Yellow', value: '#ffff00' },
+                    { name: 'Red', value: '#ff0000' },
+                    { name: 'Green', value: '#00ff00' },
+                    { name: 'Blue', value: '#0080ff' },
+                    { name: 'Purple', value: '#8000ff' },
+                    { name: 'Orange', value: '#ff8000' },
+                    { name: 'Pink', value: '#ff00ff' }
+                  ].map(color => (
+                    <PixelButton
+                      key={color.value}
+                      variant={fontColor === color.value ? 'default' : 'secondary'}
+                      onClick={() => setFontColor(color.value)}
+                      className="text-xs h-8 px-2"
+                      style={{ 
+                        backgroundColor: fontColor === color.value ? undefined : color.value,
+                        color: fontColor === color.value ? undefined : '#000000'
+                      }}
+                    >
+                      {color.name}
                     </PixelButton>
                   ))}
                 </div>
@@ -245,9 +276,9 @@ const Styles = () => {
                   
                   {/* Sample caption overlay */}
                   <div className="absolute bottom-6 left-4 right-4">
-                     <div 
+                   <div 
                       className={`
-                        font-pixel text-xs text-foreground px-2 py-1 text-center
+                        font-pixel text-xs px-2 py-1 text-center
                         ${captionStyle.allCaps ? 'uppercase' : ''}
                         ${captionStyle.dropShadow ? 'text-shadow-pixel' : ''}
                         ${captionStyle.outline ? 'text-outline-pixel' : ''}
@@ -255,7 +286,8 @@ const Styles = () => {
                       style={{
                         fontFamily: selectedFont === 'Press Start 2P' ? 'Press Start 2P' : 
                                   selectedFont === 'VT323' ? 'VT323' : 'Inter',
-                        backgroundColor: 'rgba(0,0,0,0.8)'
+                        backgroundColor: 'rgba(0,0,0,0.8)',
+                        color: fontColor
                       }}
                     >
                       {selectedTheme === 'Degenerate' ? 'MOON MOON MOON!' : 
@@ -283,6 +315,7 @@ const Styles = () => {
                 <h4 className="font-pixel text-sm">Preview Settings:</h4>
                 <div className="text-xs font-pixel text-muted-foreground space-y-1">
                   <div>Font: {selectedFont}</div>
+                  <div>Color: {fontColor}</div>
                   <div>Theme: {selectedTheme}</div>
                   <div>Effects: {Object.values(sfxEnabled).filter(Boolean).length}/4</div>
                 </div>
