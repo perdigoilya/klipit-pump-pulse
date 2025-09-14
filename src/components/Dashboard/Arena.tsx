@@ -4,6 +4,10 @@ import { PixelCard, PixelCardContent, PixelCardHeader, PixelCardTitle } from '@/
 import { PixelButton } from '@/components/ui/pixel-button';
 import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
+import stream1 from '@/assets/stream-1.png';
+import stream2 from '@/assets/stream-2.png';
+import stream3 from '@/assets/stream-3.png';
+import stream4 from '@/assets/stream-4.png';
 
 const Arena = () => {
   const { toast } = useToast();
@@ -20,7 +24,7 @@ const Arena = () => {
       streamer: "DegenKing420",
       viewers: 2847,
       token: "$MOON",
-      thumbnail: "/placeholder.svg",
+      thumbnail: "user-uploads://Screenshot_2025-09-14_at_4.18.41 AM-2.png",
       title: "🚀 MOON TO THE STRATOSPHERE 🚀",
       hype: 94,
       duration: "2h 34m",
@@ -31,7 +35,7 @@ const Arena = () => {
       streamer: "CryptoSage",
       viewers: 1923,
       token: "$PEPE",
-      thumbnail: "/placeholder.svg", 
+      thumbnail: "user-uploads://Screenshot_2025-09-14_at_4.19.48 AM-2.png",
       title: "PEPE REVIVAL - 1000X INCOMING",
       hype: 87,
       duration: "45m",
@@ -42,7 +46,7 @@ const Arena = () => {
       streamer: "DiamondHands",
       viewers: 1456,
       token: "$SHIB",
-      thumbnail: "/placeholder.svg",
+      thumbnail: "user-uploads://Screenshot_2025-09-14_at_4.20.50 AM-2.png",
       title: "SHIB WHALE MOVEMENTS DETECTED",
       hype: 76,
       duration: "1h 12m",
@@ -53,7 +57,7 @@ const Arena = () => {
       streamer: "MoonMission",
       viewers: 892,
       token: "$DOGE",
-      thumbnail: "/placeholder.svg",
+      thumbnail: "user-uploads://Screenshot_2025-09-14_at_4.21.52 AM-2.png",
       title: "Elon Tweet Analysis + Price Action",
       hype: 83,
       duration: "23m",
