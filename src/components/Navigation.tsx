@@ -47,7 +47,7 @@ const Navigation = () => {
               Styles
             </PixelButton>
           </Link>
-          <PixelTooltip>
+          <PixelTooltip delayDuration={0}>
             <PixelTooltipTrigger asChild>
               <PixelButton variant="secondary" size="sm">
                 Sign In
@@ -128,7 +128,7 @@ const Navigation = () => {
                 Styles
               </PixelButton>
             </Link>
-            <PixelTooltip>
+            <PixelTooltip delayDuration={0}>
               <PixelTooltipTrigger asChild>
                 <PixelButton variant="secondary" size="sm" className="w-full justify-start">
                   Sign In
