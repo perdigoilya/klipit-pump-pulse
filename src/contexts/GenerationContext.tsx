@@ -11,9 +11,9 @@ interface GenerationContextType {
   resetGeneration: () => void;
 }
 
-const GenerationContext = createContext<GenerationContextType | undefined>(undefined);
+const GenerationContext = createContext<GenerationContextType | null>(null);
 
-export const useGeneration = () => {
+export const useGeneration = (): GenerationContextType => {
   const context = useContext(GenerationContext);
   if (!context) {
     throw new Error('useGeneration must be used within a GenerationProvider');
