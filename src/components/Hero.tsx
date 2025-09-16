@@ -18,7 +18,7 @@ const Hero = () => {
 
   const taglines = [
     "Streamers stream. We Klipit.",
-    "From rug to reel in 60 seconds.",
+    "From stream to reel in 60 seconds.",
     "The engine of pump.fun attention.",
     "Every clip pumps the culture."
   ];

@@ -53,7 +53,7 @@ const Analytics = () => {
     { topic: "Whale movements", score: 89, change: "+8%" },
     { topic: "Elon tweets", score: 85, change: "-2%" },
     { topic: "Chart breakouts", score: 78, change: "+15%" },
-    { topic: "Rug warnings", score: 71, change: "+5%" }
+    { topic: "Market alerts", score: 71, change: "+5%" }
   ];
 
   const getScoreColor = (score: number) => {

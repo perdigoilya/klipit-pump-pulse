@@ -302,7 +302,7 @@ const Styles = () => {
                   {/* Sample tags */}
                   <div className="absolute top-4 right-4 flex gap-1">
                     <span className="bg-foreground text-background px-1 py-0.5 text-xs font-pixel">
-                      RUG
+                      EPIC
                     </span>
                     <span className="bg-foreground text-background px-1 py-0.5 text-xs font-pixel">
                       GG

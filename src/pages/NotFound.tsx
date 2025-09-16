@@ -22,7 +22,7 @@ const NotFound = () => {
           <div>
             <h1 className="font-pixel-xl text-2xl mb-2">Page Not Found</h1>
             <p className="font-pixel text-muted-foreground">
-              This page got rugged. Let's get you back to safety.
+              This page doesn't exist. Let's get you back to safety.
             </p>
           </div>
           

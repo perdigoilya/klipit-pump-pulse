@@ -36,11 +36,11 @@ const Library = () => {
   const [clips] = useState<LibraryClip[]>([
     {
       id: '1',
-      filename: 'epic-rug-moment.mp4',
+      filename: 'epic-crash-moment.mp4',
       duration: '00:23',
       createdAt: '2 hours ago',
       streamSource: 'pump.fun/degen-trader',
-      tags: ['RUG', 'EPIC', 'CHAT'],
+      tags: ['CRASH', 'EPIC', 'CHAT'],
       views: 1247,
       downloads: 89
     },
