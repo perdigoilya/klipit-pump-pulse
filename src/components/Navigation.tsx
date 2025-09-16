@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { PixelButton } from '@/components/ui/pixel-button';
-import { Menu, X } from 'lucide-react';
+import { PixelProgress } from '@/components/ui/pixel-progress';
+import { useGeneration } from '@/contexts/GenerationContext';
+import { Menu, X, Loader2 } from 'lucide-react';
 import logo from '@/assets/logo.png';
 import klipitLogo from '@/assets/klipit-logo.png';
 
 const Navigation = () => {
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { isGenerating, progress, progressText } = useGeneration();
   
   return (
     <header className="border-b-2 border-foreground bg-background p-4">
@@ -48,6 +51,20 @@ const Navigation = () => {
           </PixelButton>
         </div>
 
+        {/* Generation Progress Indicator */}
+        {isGenerating && (
+          <div className="hidden md:flex items-center gap-3 mr-4">
+            <Loader2 className="w-4 h-4 animate-spin text-primary" />
+            <div className="flex flex-col gap-1">
+              <div className="text-xs text-muted-foreground">Generating clips...</div>
+              <div className="w-32">
+                <PixelProgress value={progress} max={100} />
+              </div>
+            </div>
+            <div className="text-xs font-bold text-primary">{progress}%</div>
+          </div>
+        )}
+
         {/* Mobile Menu Button */}
         <button
           className="md:hidden p-2"
@@ -57,6 +74,20 @@ const Navigation = () => {
           {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </nav>
+
+      {/* Mobile Generation Progress */}
+      {isGenerating && (
+        <div className="border-t-2 border-foreground bg-background p-4">
+          <div className="flex items-center gap-3">
+            <Loader2 className="w-4 h-4 animate-spin text-primary" />
+            <div className="flex-1">
+              <div className="text-xs text-muted-foreground mb-1">{progressText}</div>
+              <PixelProgress value={progress} max={100} />
+            </div>
+            <div className="text-xs font-bold text-primary">{progress}%</div>
+          </div>
+        </div>
+      )}
 
       {/* Mobile Navigation Menu */}
       {isMobileMenuOpen && (
