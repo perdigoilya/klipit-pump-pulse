@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { PixelButton } from '@/components/ui/pixel-button';
 import { PixelProgress } from '@/components/ui/pixel-progress';
+import { PixelTooltip, PixelTooltipContent, PixelTooltipTrigger } from '@/components/ui/pixel-tooltip';
 import { useGeneration } from '@/contexts/GenerationContext';
 import { Menu, X, Loader2 } from 'lucide-react';
 import logo from '@/assets/logo.png';
@@ -46,9 +47,16 @@ const Navigation = () => {
               Styles
             </PixelButton>
           </Link>
-          <PixelButton variant="secondary" size="sm">
-            Sign In
-          </PixelButton>
+          <PixelTooltip>
+            <PixelTooltipTrigger asChild>
+              <PixelButton variant="secondary" size="sm">
+                Sign In
+              </PixelButton>
+            </PixelTooltipTrigger>
+            <PixelTooltipContent>
+              <p className="font-pixel text-xs">Coming Soon</p>
+            </PixelTooltipContent>
+          </PixelTooltip>
         </div>
 
         {/* Generation Progress Indicator */}
@@ -120,9 +128,16 @@ const Navigation = () => {
                 Styles
               </PixelButton>
             </Link>
-            <PixelButton variant="secondary" size="sm" className="w-full justify-start">
-              Sign In
-            </PixelButton>
+            <PixelTooltip>
+              <PixelTooltipTrigger asChild>
+                <PixelButton variant="secondary" size="sm" className="w-full justify-start">
+                  Sign In
+                </PixelButton>
+              </PixelTooltipTrigger>
+              <PixelTooltipContent>
+                <p className="font-pixel text-xs">Coming Soon</p>
+              </PixelTooltipContent>
+            </PixelTooltip>
           </div>
         </div>
       )}
