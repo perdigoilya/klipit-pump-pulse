@@ -32,6 +32,8 @@ const Generate = () => {
   const [progress, setProgress] = useState(0);
   const [progressText, setProgressText] = useState('');
   const [clips, setClips] = useState<ClipData[]>([]);
+  const [hasError, setHasError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     if (location.state?.streamUrl) {
@@ -61,77 +63,91 @@ const Generate = () => {
     setIsGenerating(true);
     setProgress(0);
     setClips([]);
+    setHasError(false);
+    setErrorMessage('');
 
+    // 8-minute loading with realistic steps and random sticking points
+    const totalDuration = 8 * 60 * 1000; // 8 minutes in milliseconds
+    const stickingPoints = [15, 28, 45, 62, 73, 85, 97]; // Percentages where it might stick
     const steps = [
-      { text: "Finding chaos...", duration: 2000 },
-      { text: "Cutting boring parts...", duration: 2500 },
-      { text: "Adding drip...", duration: 2000 }
+      { text: "Connecting to stream servers...", startPercent: 0, endPercent: 12 },
+      { text: "Downloading stream data...", startPercent: 12, endPercent: 25 },
+      { text: "Analyzing chat interactions...", startPercent: 25, endPercent: 40 },
+      { text: "Detecting viral moments...", startPercent: 40, endPercent: 55 },
+      { text: "Processing audio peaks...", startPercent: 55, endPercent: 68 },
+      { text: "Generating thumbnails...", startPercent: 68, endPercent: 80 },
+      { text: "Optimizing clip quality...", startPercent: 80, endPercent: 90 },
+      { text: "Uploading to S3 servers...", startPercent: 90, endPercent: 97 },
+      { text: "Finalizing clips...", startPercent: 97, endPercent: 100 }
     ];
 
-    for (let i = 0; i < steps.length; i++) {
-      setProgressText(steps[i].text);
+    let currentStep = 0;
+    let currentProgress = 0;
+    const startTime = Date.now();
+
+    const updateProgress = () => {
+      const elapsed = Date.now() - startTime;
+      const step = steps[currentStep];
       
-      await new Promise(resolve => {
-        const interval = setInterval(() => {
-          setProgress(prev => {
-            const target = ((i + 1) / steps.length) * 100;
-            const newValue = prev + 2;
-            if (newValue >= target) {
-              clearInterval(interval);
-              resolve(undefined);
-              return target;
-            }
-            return newValue;
-          });
-        }, 50);
-      });
-    }
+      if (!step) return;
 
-    // Generate mock clips
-    const mockClips: ClipData[] = [
-      {
-        id: '1',
-        filename: 'klip-001.mp4',
-        duration: '00:23',
-        tags: ['RUG', 'PUMP', 'CHAT GOES WILD'],
-        thumbnail: '/api/placeholder/160/284',
-        createdAt: 'Just now'
-      },
-      {
-        id: '2',
-        filename: 'klip-002.mp4', 
-        duration: '00:18',
-        tags: ['MOON', 'GG'],
-        thumbnail: '/api/placeholder/160/284',
-        createdAt: 'Just now'
-      },
-      {
-        id: '3',
-        filename: 'klip-003.mp4',
-        duration: '00:35',
-        tags: ['RUG', 'BASED', 'PEAK'],
-        thumbnail: '/api/placeholder/160/284',
-        createdAt: 'Just now'
-      },
-      {
-        id: '4',
-        filename: 'klip-004.mp4',
-        duration: '00:27',
-        tags: ['PUMP', 'ATTENTION'],
-        thumbnail: '/api/placeholder/160/284', 
-        createdAt: 'Just now'
+      setProgressText(step.text);
+
+      // Calculate target progress based on time elapsed
+      let targetProgress = Math.min((elapsed / totalDuration) * 100, step.endPercent);
+      
+      // Add random sticking behavior
+      if (stickingPoints.includes(Math.floor(currentProgress)) && Math.random() > 0.7) {
+        // 30% chance to stick at certain points
+        targetProgress = currentProgress;
       }
-    ];
 
-    setClips(mockClips);
+      // Special handling for 97% - always stick here
+      if (currentProgress >= 97) {
+        targetProgress = 97;
+        
+        // After being stuck at 97% for 30 seconds, show error
+        if (elapsed > totalDuration - 30000) {
+          setHasError(true);
+          setErrorMessage("Error communicating with S3 servers");
+          setIsGenerating(false);
+          
+          toast({
+            title: "Generation Failed",
+            description: "Error communicating with S3 servers. Please try again later.",
+            variant: "destructive"
+          });
+          return;
+        }
+      }
+
+      // Gradually move towards target
+      if (currentProgress < targetProgress) {
+        currentProgress = Math.min(currentProgress + Math.random() * 0.5, targetProgress);
+        setProgress(currentProgress);
+      }
+
+      // Move to next step
+      if (currentProgress >= step.endPercent && currentStep < steps.length - 1) {
+        currentStep++;
+      }
+
+      // Continue updating unless we're stuck at 97% or done
+      if (currentProgress < 100 && !hasError) {
+        setTimeout(updateProgress, 100 + Math.random() * 200); // Random interval 100-300ms
+      }
+    };
+
+    updateProgress();
+  };
+
+  const resetGeneration = () => {
     setIsGenerating(false);
-    setProgress(100);
+    setProgress(0);
     setProgressText('');
-
-    toast({
-      title: "Success",
-      description: "Klips generated! Download or tweak styles."
-    });
+    setHasError(false);
+    setErrorMessage('');
+    setClips([]);
   };
 
   const downloadClip = (clip: ClipData) => {
@@ -185,19 +201,41 @@ const Generate = () => {
             </p>
           </div>
 
-          <PixelButton 
-            onClick={generateClips}
-            disabled={!streamUrl.trim() || isGenerating}
-            className="flex items-center gap-2"
-          >
-            <Sparkles className="w-4 h-4" />
-            {isGenerating ? 'Generating...' : 'Generate Klips'}
-          </PixelButton>
+          <div className="flex gap-2">
+            <PixelButton 
+              onClick={hasError ? resetGeneration : generateClips}
+              disabled={!streamUrl.trim() || (isGenerating && !hasError)}
+              className="flex items-center gap-2 flex-1"
+            >
+              <Sparkles className="w-4 h-4" />
+              {hasError ? 'Try Again' : isGenerating ? 'Generating...' : 'Generate Klips'}
+            </PixelButton>
+            
+            {hasError && (
+              <PixelButton 
+                onClick={resetGeneration}
+                variant="secondary"
+                className="flex items-center gap-2"
+              >
+                Reset
+              </PixelButton>
+            )}
+          </div>
 
-          {isGenerating && (
+          {(isGenerating || hasError) && (
             <div className="space-y-2">
               <PixelProgress value={progress} />
-              <p className="font-pixel text-sm text-center">{progressText}</p>
+              <div className="text-center space-y-1">
+                <p className="font-pixel text-sm">{progressText}</p>
+                {hasError && (
+                  <div className="bg-destructive/10 border border-destructive text-destructive px-3 py-2 font-pixel text-xs">
+                    {errorMessage}
+                  </div>
+                )}
+                <p className="text-xs text-muted-foreground font-pixel">
+                  {Math.floor(progress)}% complete
+                </p>
+              </div>
             </div>
           )}
         </PixelCardContent>
